@@ -16,7 +16,7 @@
 
 \begin{frame}
 \frametitle{Goal}
-The goal of this talk is to see a relationship between \textbf{group} theory and \textbf{graph} theory. \bigskip
+The talk demonstrates a relationship between \textbf{group} theory and \textbf{graph} theory. \bigskip
 
 To do this we will introduce Cayley DiGraphs of Groups which will allow us to visualize a group as a directed graph. \bigskip
 
@@ -130,6 +130,79 @@ Let G be a finite group and let S be a set of generators for G. We define a digr
         \item For each x and y in G, there is an arc from x to y if and only if xs = y for some s $\in$ S.
     \end{enumerate}
 \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cayley Digraphs of Groups}
+\begin{block}{Example}
+Let's look at $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ as an example. We need to check the first condition: each element of G is a vertex of Cay(S:G). \smallskip
+
+$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ = \{(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1)\} \smallskip
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{images/Z_3_Z_2.png}
+\caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ DiGraph}
+\end{figure}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Cayley DiGraphs of Groups}
+The second condition says that $\exists$ arc iff an element of the group multiplied by some generator produces a new element of the group. \smallskip
+Some examples of this in $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ are: \smallskip
+
+$(2, 0) \cdot (1, 0)$ = (2 + 1, 0 + 0) = (3 mod(3), 0 mod(2)) = (0, 0) \smallskip
+
+$(1, 1) \cdot (0, 1)$ = (1 + 0, 1 + 1) = (1 mod(3), 2 mod(2)) = (1, 0)
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{images/Z_3_Z_2.png}
+\caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ DiGraph}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Cayley DiGraphs of Groups}
+How do we find relations for a group and how might a graph help us do this?
+\pause
+
+In general, finding the relations for a group is a problem in computational group theory. There are specific algorithms that search the "group space" to find and confirm relations in large groups. We will not cover these today. Instead, we will look at two finite groups whose relations we can see by tracing the arcs.
+\end{frame}
+
+\begin{frame}{Cayley DiGraphs of Groups}
+
+We will use $A_{4}$ as an example and let's begin by finding the relations between the generators and the identity element. \smallskip
+
+Let $a$ = (12)(34) and $b$ = (123).
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{images/A_4_DiGraph.png}
+\caption{$A_{4}$ DiGraph}
+\end{figure}
+
+\pause
+$a^{2} = b^{3} = (ab)^{3} = (1)$
+\pause
+
+We can also derive other relations from this set of generators. \smallskip
+
+$(ab)^{3} = ababab = bab = a^{-1}b^{-1}a^{-1} = (124)$
+
+\end{frame}
+
+\begin{frame}{Cayley DiGraphs of Groups}
+You may be wondering how to know the complete set of relations for a group. In my understanding this is an undecidable problem. \medskip
+\pause
+
+Gallian mentions that there are cases where one group can be defined with two different sets of generators and relations. So another undecidable problem is determining whether these groups are isomorphic to each other. \medskip
+\pause
+
+Lastly, note that defining a group by its presentation does not provide information on the cardinality of the group. Consider the group presentation for $A_{4}: \langle a^{2} = b^{3} = (ab)^{3} = e \rangle$. If we did not know prior information about the cardinality of $A_{4}$ we would not know if it was finite or infinite. \medskip
+
+As another example $\mathbb{Z}$ has the group presentation $\langle x \rangle$ and we know this is infinite.
 \end{frame}
 
 \end{document}
