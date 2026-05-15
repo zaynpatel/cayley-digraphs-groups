@@ -1,0 +1,135 @@
+\documentclass{beamer}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{caption}
+\usepackage{subcaption}
+%Information to be included in the title page:
+\title{Groups, graphs, and morphisms}
+\author{Zayn Patel \\ \texttt{zaynpatelwhs@gmail.com}}
+\date{May 21, 2026}
+\setbeamertemplate{navigation symbols}{}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Goal}
+The goal of this talk is to see a relationship between \textbf{group} theory and \textbf{graph} theory. \bigskip
+
+To do this we will introduce Cayley DiGraphs of Groups which will allow us to visualize a group as a directed graph. \bigskip
+
+This visualization can help us understand properties of a group (e.g. the relations) but we will discover that Cayley DiGraphs give us many valuable theorems about groups we like (e.g. $\mathbb{Z}_{m} \oplus \mathbb{Z}_{n})$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Topics covered}
+To accomplish our goal we will cover the following: \bigskip
+    \begin{itemize}
+        \item Generators and relations
+        \item Cayley DiGraphs of Groups
+        \item Hamiltonicity of DiGraphs
+        \item Graph theory meets groups theory
+        \item Generators and relations rigor
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Generators and relations}
+    \begin{itemize}
+        \item<1-> Generators and relations are special elements we can combine, via the group operation, to get any other element in the group.
+        \item<2-> Groups with a single element that combines with itself to generate the entire group are called \textbf{cyclic}. Recall that we can also have subgroups which are cyclic.
+        \item<3-> Most groups we have worked with are not cyclic and have multiple generators. $\mathbb{Z}$, for example, has $\pm 1$ as a generator. $D_{4}$ has $R_{90}$ and $H$ as generators. 
+        \item<4-> We call the set of generators of G the \textbf{generating set} which is usually called S. For $D_{4}$, $S = \{R_{90}, H\}$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Generators and relations}
+    \begin{itemize}
+        \item<1-> Relation definition: the smallest set of equations that specify the conditions the generators must satisfy. In $D_{4}$ $R^{4} = H^{2} = (RH)^{2} = R_{0}$.
+        \item<2-> Because this is the minimal set we can derive all additional relations from this set.
+        \item<3-> If two groups are defined by the same relations, they are isomorphic.
+        \item<4-> Describing a group by its generators and relations is called a \textbf{group presentation}. The presentation for $D_{4}$ is $\langle R, H | R^{4} = H^{2} = (RH)^{2} = R_{0}\rangle$.
+        \item<4-> In order to define generators and relations rigorously, we need a beautiful concept called free groups. More information is available in the appendix if you are interested.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cayley Digraphs of Groups}
+
+\textit{Purpose:} Visualize a group given by generators and relations
+
+These are directed graphs where vertices are group elements and arcs, which are the generators, connect the vertices. \medskip
+
+\textit{Note:} Edges are typically used to describe vertex connections in \textbf{undirected} graphs while arcs describe connections in \textbf{directed graphs}.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Z_6_DiGraph.png}
+        \caption{$\mathbb{Z}_{6}$ DiGraph}
+        \label{fig:Z_6 DiGraph}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/A_4_DiGraph.png}
+        \caption{$A_{4}$ DiGraph}
+        \label{fig:A_4 DiGraph}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/S_3.png}
+        \caption{$S_{3}$ DiGraph}
+        \label{fig:Z_6 DiGraph}
+    \end{subfigure}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cayley Digraphs of Groups}
+
+Example 8 shows us that we can make DiGraphs for infinite groups too.
+
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Z_3_Z_2.png}
+        \caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ DiGraph}
+        \label{fig:Z_3 x Z_2 DiGraph}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/D_4_DiGraph.png}
+        \caption{$D_{4}$ DiGraph}
+        \label{fig:D_4 DiGraph}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Infinite_DiGraph.png}
+        \caption{Infinite DiGraph}
+        \label{fig: Infinite Vertices}
+    \end{subfigure}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cayley Digraphs of Groups}
+\begin{block}{Definition: Cayley Digraph of a Group}
+Let G be a finite group and let S be a set of generators for G. We define a digraph Cay(S:G), called the Cayley digraph of G with the generating set S, as follows:
+    \begin{enumerate}
+        \item Each element of G is a vertex of Cay(S:G)
+        \item For each x and y in G, there is an arc from x to y if and only if xs = y for some s $\in$ S.
+    \end{enumerate}
+\end{block}
+\end{frame}
+
+\end{document}
