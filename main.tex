@@ -16,7 +16,7 @@
 
 \begin{frame}
 \frametitle{Goal}
-The talk demonstrates a relationship between \textbf{group} theory and \textbf{graph} theory. \bigskip
+This talk demonstrates a relationship between \textbf{group} theory and \textbf{graph} theory. \bigskip
 
 To do this we will introduce Cayley DiGraphs of Groups which will allow us to visualize a group as a directed graph. \bigskip
 
@@ -173,7 +173,7 @@ In general, finding the relations for a group is a problem in computational grou
 
 \begin{frame}{Cayley DiGraphs of Groups}
 
-We will use $A_{4}$ as an example and let's begin by finding the relations between the generators and the identity element. \smallskip
+We will use $A_{4}$ as an example and let us begin by finding the relations between the generators and the identity element. \smallskip
 
 Let $a$ = (12)(34) and $b$ = (123).
 
@@ -194,7 +194,7 @@ $(ab)^{3} = ababab = bab = a^{-1}b^{-1}a^{-1} = (124)$
 \end{frame}
 
 \begin{frame}{Cayley DiGraphs of Groups}
-You may be wondering how to know the complete set of relations for a group. In my understanding this is an undecidable problem. \medskip
+You may be wondering how to know the complete set of relations for a group. In my understanding, this is an undecidable problem. \medskip
 \pause
 
 Gallian mentions that there are cases where one group can be defined with two different sets of generators and relations. So another undecidable problem is determining whether these groups are isomorphic to each other. \medskip
@@ -203,6 +203,75 @@ Gallian mentions that there are cases where one group can be defined with two di
 Lastly, note that defining a group by its presentation does not provide information on the cardinality of the group. Consider the group presentation for $A_{4}: \langle a^{2} = b^{3} = (ab)^{3} = e \rangle$. If we did not know prior information about the cardinality of $A_{4}$ we would not know if it was finite or infinite. \medskip
 
 As another example $\mathbb{Z}$ has the group presentation $\langle x \rangle$ and we know this is infinite.
+\end{frame}
+
+\begin{frame}{Graph Theory meets Group Theory}
+\begin{block}{Definition: Hamiltonian Circuit and Path}
+    \begin{itemize}
+        \item<1-> \textit{Hamiltonian Circuit:} Path that starts at a vertex, visits each vertex exactly once, and returns to the starting vertex.
+        \item<2-> \textit{Hamiltonian Path:} Path that starts at a vertex and visits each vertex exactly once without returning to the starting vertex.
+    \end{itemize}
+
+    \begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Z_32_Ham_Path.png}
+        \caption{Hamiltonian Path in the $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ DiGraph}
+        \label{fig:Z_3 x Z_2 HamPath DiGraph}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/Q_4_Hamil_Circuit.png}
+        \caption{Hamiltonian Circuit in the $Q_{4}$ DiGraph}
+        \label{fig:Q_{4} DiGraph}
+        \end{subfigure}
+        \hfill
+    \end{figure}
+\end{block}
+\end{frame}
+
+\begin{frame}{Graph Theory meets Group Theory}
+Hamiltonian paths and circuits are not unique; in any given graph we may find multiple paths that satisfy the definition.
+
+There is a condition about Hamiltonian circuits and generators which is important enough to prove.
+
+\textbf{Claim:} If $x_{1}, x_{2}, ..., x_{n}$ is a sequence of generators determining a Hamiltonian circuit, then the same sequence determines a Hamiltonian circuit for any starting vertex. \smallskip
+
+This is profound because ...
+
+\begin{proof}
+TODO item.
+\end{proof}
+\end{frame}
+
+\begin{frame}{More group theory and graph theory connections}
+So far we have associated a graph with a group but we can go the other way. That is we can associate a group with every graph. This group is called the automorphism group of a graph.
+
+We will be talking about the automorphism group of a graph so we need to define new terms. From group theory we know that an automorphism is an isomorphism from a group to itself. The set of automorphisms of a group forms a group called the \textbf{automorphism group} denoted Aut(G). The elements of Aut(G) are group isomorphisms. The appendix contains a proof that the automorphism group is a group with under function composition.
+\end{frame}
+
+\begin{frame}{Graph Isomorphisms and Automorphisms}
+    \begin{block}{Definition: Graph Isomorphisms and Automorphisms}
+    \begin{itemize}
+    \item<1-> \textit{Graph isomorphism:} An isomorphism between graphs G and H is a bijection $\phi: V(G) \to V(H)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(H)$. Notice that this defines an isomorphism between the vertex sets of the graphs. In examples, we will see that the degree of the vertex also matters in defining an isomorphism.
+    \item<2-> \textit{Graph automorphism:} An isomorphism from a graph to itself. Formally, it is a bijection $\phi: V(G) \to V(G)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(G)$.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Finding an automorphism from a graph G}
+\end{frame}
+\begin{frame}{Appendix: Proof that the automorphism group is a group}
+\textbf{Claim: The automorphism group is a group.}
+    \begin{proof}
+        Let Aut(G) be the automorphism group of G. We want to show that this is a group. First we note that the identity map (the map that takes each element of g in the domain to its corresponding g in the codomain) is an element of Aut(G) by definition. This map is 1-1, onto, and operation preserving. Thus we have an identity element of Aut(G).
+        
+        Next, let $\varphi: G \to G$, $\lambda: G \to G$ $\in$ Aut(G). We want to show that $(\varphi \circ \lambda)(g) \in G$. $\lambda (g) = g$ in $\lambda: G \to G$. So $g$ is an element of the codomain of $\lambda$ which is the input to $\varphi$. Then $\varphi(g) = g$ by its map. Thus we have closure.
+        
+        For inverses, let $\varphi: G \to G \in$ Aut(G). By definition of Aut(G) $\varphi$ is an isomorphism. By Theorem 6.2, property 1 (Gallian 10th edition) $\varphi^{-1}$ exists and is an isomorphism from $G \to G$. Lastly, the associative property is inherited from the definition of function composition.
+    \end{proof}
 \end{frame}
 
 \end{document}
