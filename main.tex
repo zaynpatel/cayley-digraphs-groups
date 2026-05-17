@@ -248,24 +248,111 @@ TODO item.
 \end{proof}
 \end{frame}
 
+\begin{frame}{Hamiltonian circuits in Cay($\{(1, 0), (0, 1)\}: \mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$)}
+In our examples we looked at $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$, let us investigate if there is a Hamiltonian circuit in its Cayley digraph. We will first consider the case where gcd(m, n) = 1. 
+
+\textbf{Claim:} There is no Hamiltonian circuit in $\mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$ when gcd(m, n) = 1.
+\pause
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Z_m_Z_n_DiGraph.png}
+    \caption{$\mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$ DiGraph as a rectangular grid}
+    \label{fig:Z_m x Z_n DiGraph}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Hamiltonian circuits in Cay($\{(1, 0), (0, 1)\}: \mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$)}
+\begin{proof}
+    Suppose there is a Hamiltonian circuit in the DiGraph and we start at some vertex $(a, b)$ which exits horizontally. \medskip \pause 
+
+    If $(a, b)$ exits horizontally then $(a - 1, b + 1)$ must also exit horizontally otherwise it will pass through $(a, b + 1)$ twice. Now, $(a - 2, b + 2)$ must exit horizontally otherwise it will pass through $(a - 1, b + 1)$ twice. \medskip \pause
+
+    When we repeat this argument we see that every vertex will need to exit horizontally. But, if we exit each vertex horizontally we cannot have a Hamiltonian circuit. Thus we get a contradiction; there is no Hamiltonian circuit for a DiGraph with gcd(m, n) = 1. \medskip
+\end{proof}
+\end{frame}
+
+\begin{frame}{Visualizing our proof}
+\begin{tikzpicture}
+    \node[fill=black, circle, inner sep=1.5 pt, label=below:{(a, b)}] (n1) at (-2, 0) {};
+    \node[fill=black, circle, inner sep=1.5 pt, label=below:{(a, b + 1)}] (n2) at (2, 0) {};
+    \node[fill=black, circle, inner sep=1.5 pt, label=above:{(a - 1, b + 1)}] (n3) at (2, 3) {};
+
+    \draw[->] (n1) -- (n2);
+    \draw[->, dotted] (n3) -- (n2);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Visualizing our proof}
+\begin{tikzpicture}
+    \node[fill=black, circle, inner sep=1.5 pt, label=below:{(a, b)}] (n1) at (-2, 0) {};
+    \node[fill=black, circle, inner sep=1.5 pt, label=below:{(a, b + 1)}] (n2) at (2, 0) {};
+    \node[fill=black, circle, inner sep=1.5 pt, label=above:{(a - 1, b + 1)}] (n3) at (2, 3) {};
+    \node[fill=black, circle, inner sep=1.5 pt, label=above:{(a - 1, b + 2)}] (n4) at (5, 3) {};
+    \node[fill=black, circle, inner sep=1.5 pt, label=above:{(a - 2, b + 2)}] (n5) at (5, 6) {};
+    \node[fill=black, circle, inner sep=1.5 pt] (n6) at (8, 6) {};
+
+    \draw[->] (n1) -- (n2);
+    \draw[->, dotted] (n3) -- (n2);
+    \draw[->] (n3) -- (n4);
+    \draw[->, dotted] (n5) -- (n4);
+    \draw [->] (n5) -- (n6);
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Hamiltonian circuits in Cay($\{(1, 0), (0, 1)\}: \mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$)}
+Now we look at the special case where gcd(m, n) $>$ 1.
+
+\textbf{Claim:} Cay($\{(1, 0), (0, 1)\}): \mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$ has a Hamiltonian circuit when $n \mid m$.
+\begin{proof}
+    \only <1>{By hypothesis we know that $m = nk$ for some $k$ $\in \mathbb{Z}$. We want to prove the claim using a coordinatized DiGraph similar to our previous theorem. Since the $gcd(m, n) >1 $ we have an external direct product of the form $\mathbb{Z}_{nk} \oplus \mathbb{Z}_{n}$. This product has $n^{2}k$ elements. The external direct product has $n^{2} = n \times n$ elements $k$ times. So the coordinatized DiGraph has $k$ $n \times n$ blocks.}
+
+    \only<2>{To form a Hamiltonian circuit we begin at the vertex $(0, 0)$ and cover the vertices in the first block by using the generator $(0, 1)$ until the last vertex in the first block is reached. Then apply the generator $(1, 0)$ to move vertically and continue this process of applying $(0, 1)$ to move horizontally and $(1, 0)$ to move vertically for each of the $k$ blocks until the vertex $(n - 1, 0)$ has been reached. We move vertically to the next block and repeat this process until the last vertex in the $k$th $n \times n$ block.}
+
+    \only<3>{Now, the left-most vertex in the last block is $(nk - 1, 0)$ and this needs to exit horizontally or vertically, by definition. Apply the generator $(1, 0)$ to this vertex. Then $(nk - 1, 0) + (1, 0) = (nk - 1 + 1, 0) = (nk, 0)$. Recall that our external direct product is $\mathbb{Z}_{nk} \oplus \mathbb{Z}_{k}$ so we can apply the group operation to $nk$ s.t. $nk \ mod \ (nk) = 0$.
+
+    Thus, $(nk - 1, 0)$ exits vertically to $(0, 0)$ completing the Hamiltonian circuit.}
+\alt<3>{\qedhere}{\phantom\qedhere}
+\end{proof}
+\end{frame}
+
+\begin{frame}{Visualizing our proof with $\mathbb{Z}_{3k} \oplus \mathbb{Z}_{3}$}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{images/Z_3k_3_DiGraph.png}
+        \caption{Coordinatized $\mathbb{Z}_{3k} \oplus \mathbb{Z}_{3}$ DiGraph}
+        \label{fig:Z_3k_3_DiGraph}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Additional details about $gcd(m, n)$}
+
+\begin{itemize}
+    \item<1-> The graph in $gcd(m, n) = 1$ was $m \times n$ while the graph in $gcd(m, n) > 1$ was $kn \times n$.
+    \item<2-> In the relatively prime graph each vertex was in the coset $(a, b) + \langle (-1, 1)\rangle$. This is because in the relatively prime case there was no generator that gave us a multiple of a and b at the same time so that we can reduce it to the starting vertex: $(a, b)$. \textit{As an example, try adding either generator to the last element in the $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ DiGraph.}
+    \item<3-> The two theorems we proved are about external direct products of \textit{two} $\mathbb{Z}$-mod groups but I wonder if we can generalize this theorem to Cayley DiGraphs with more than two groups.
+\end{itemize}
+    
+\end{frame}
+
 \begin{frame}{More group theory and graph theory connections}
 So far we have associated a graph with a group but we can go the other way. That is we can associate a group with every graph. This group is called the automorphism group of a graph.
 
-We will be talking about the automorphism group of a graph so we need to define new terms. From group theory we know that an automorphism is an isomorphism from a group to itself. The set of automorphisms of a group forms a group called the \textbf{automorphism group} denoted Aut(G). The elements of Aut(G) are group isomorphisms. The appendix contains a proof that the automorphism group is a group with under function composition.
+We will be talking about the automorphism group of a graph so we need to define new terms. From group theory we know that an automorphism is an isomorphism from a group to itself. The set of automorphisms of a group forms a group called the \textbf{automorphism group} denoted Aut(G). The elements of Aut(G) are group isomorphisms. The appendix contains a proof that the automorphism group is a group under function composition.
 \end{frame}
 
 \begin{frame}{Graph Isomorphisms and Automorphisms}
-    \begin{block}{Definition: Graph Isomorphisms and Automorphisms}
-    \begin{itemize}
-    \item<1-> \textit{Graph isomorphism:} An isomorphism between graphs G and H is a bijection $\phi: V(G) \to V(H)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(H)$. Notice that this defines an isomorphism between the vertex sets of the graphs. In examples, we will see that the degree of the vertex also matters in defining an isomorphism.
-    \item<2-> \textit{Graph automorphism:} An isomorphism from a graph to itself. Formally, it is a bijection $\phi: V(G) \to V(G)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(G)$.
+\begin{block}{Definition: Graph Isomorphisms and Automorphisms}
+\begin{itemize}
+\item<1-> \textit{Graph isomorphism:} An isomorphism between graphs G and H is a bijection $\phi: V(G) \to V(H)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(H)$. Notice that this defines an isomorphism between the vertex sets of the graphs. In examples, we will see that the degree of the vertex also matters in defining an isomorphism.
+\item<2-> \textit{Graph automorphism:} An isomorphism from a graph to itself. Formally, it is a bijection $\phi: V(G) \to V(G)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(G)$.
 \end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}{Finding the automorphisms of a graph G}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle, draw, minimum size=3mm}]
+\begin{tikzpicture}[every node/.style={circle, draw, minimum size=6mm}]
     \node (w) at (1, 2) {w};
     \node (u) at (-2, 0) {u};
     \node (v) at (0, 0) {v};
@@ -337,15 +424,23 @@ new structures are generated, the symmetries in the partition can be used to
 detect and eliminate redundant branches in the search.}
 \end{quote}
 \end{block}
+\end{frame}
+
+\begin{frame}{Appendix: Free groups}
+The point of this section is to add a rigorous explanation to the generators and relations discussion that began the talk. To begin, we will define some terms about free groups, which is the set that contains generators and relations.
+
+Let $S = \{a, b, c, ...\}$ be a set of distinct symbols. As an example, $S$ would not contain both $(12)(13) = (123)$ because these are obviously not distinct. This concept of distinctness is important for free groups. \pause
+
+Define $S^{-1} = \{a^{-1}, b^{-1}, c^{-1}, ...\}$ so that each element from $S$ has an inverse in $S^{-1}$.
 
 \end{frame}
 
 \begin{frame}{Appendix: Proof that the automorphism group is a group}
 \textbf{Claim: The automorphism group is a group.}
     \begin{proof}
-        Let Aut(G) be the automorphism group of G. We want to show that this is a group. First we note that the identity map (the map that takes each element of g in the domain to its corresponding g in the codomain) is an element of Aut(G) by definition. This map is 1-1, onto, and operation preserving. Thus we have an identity element of Aut(G).
+        Let Aut(G) be the automorphism group of G. We want to show that this is a group. First we note that the identity map (the map that takes each element of g in the domain to its corresponding g in the codomain) is an element of Aut(G) by definition. This map is 1-1, onto, and operation preserving. Thus, we have an identity element of Aut(G).
 
-        Next, let $\varphi: G \to G$, $\lambda: G \to G$ $\in$ Aut(G). We want to show that $(\varphi \circ \lambda)(g) \in G$. $\lambda (g) = g$ in $\lambda: G \to G$. So $g$ is an element of the codomain of $\lambda$ which is the input to $\varphi$. Then $\varphi(g) = g$ by its map. Thus we have closure.
+        Next, let $\varphi: G \to G$, $\lambda: G \to G$ $\in$ Aut(G). We want to show that $(\varphi \circ \lambda)(g) \in G$. $\lambda (g) = g$ in $\lambda: G \to G$. So $g$ is an element of the codomain of $\lambda$ which is the input to $\varphi$. Then $\varphi(g) = g$ by its map. Thus, we have closure.
 
         For inverses, let $\varphi: G \to G \in$ Aut(G). By definition of Aut(G) $\varphi$ is an isomorphism. By Theorem 6.2, property 1 (Gallian 10th edition) $\varphi^{-1}$ exists and is an isomorphism from $G \to G$. Lastly, the associative property is inherited from the definition of function composition.
     \end{proof}
