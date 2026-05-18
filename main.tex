@@ -235,16 +235,18 @@ As another example $\mathbb{Z}$ has the group presentation $\langle x \rangle$ a
 \end{frame}
 
 \begin{frame}{Graph Theory meets Group Theory}
-Hamiltonian paths and circuits are not unique; in any given graph we may find multiple paths that satisfy the definition.
+Hamiltonian paths and circuits are not unique; in any given graph, we may find multiple paths that satisfy the definition.
 
-There is a condition about Hamiltonian circuits and generators which is important enough to prove.
+There is a condition about Hamiltonian circuits and generators that is important enough to prove.
 
-\textbf{Claim:} If $x_{1}, x_{2}, ..., x_{n}$ is a sequence of generators determining a Hamiltonian circuit, then the same sequence determines a Hamiltonian circuit for any starting vertex. \smallskip
-
-This is profound because ...
+\textbf{Claim:} If $s_{1}, s_{2}, ..., s_{n}$ is a sequence of generators determining a Hamiltonian circuit, then the same sequence determines a Hamiltonian circuit for any starting vertex.
 
 \begin{proof}
-TODO item.
+Let $s_{1}, s_{2}, ..., s_{n}$ be a sequence of generators determining a Hamiltonian circuit. In addition, let $v_{1}, v_{2} \in G$. Since we have a Hamiltonian circuit we know that $v_{1}s_{1}s_{2}...s_{n} = v_{1}e$. By the cancellation property for groups $s_{1}s_{2}...s_{n} = e$. \pause
+
+Now take another vertex, $v_{2}$ and let $v_{2}$ be the starting vertex. By the same argument as $v_{1}$ we know that $v_{2}s_{1}s_{2}...s_{n} = v_{2}e$. After applying the cancellation property $s_{1}s_{2}...s_{n} = e$. \pause
+
+Thus we have shown that for two different, arbitrary starting vertices the same sequence results in a Hamiltonian circuit.
 \end{proof}
 \end{frame}
 
@@ -431,19 +433,96 @@ The point of this section is to add a rigorous explanation to the generators and
 
 Let $S = \{a, b, c, ...\}$ be a set of distinct symbols. As an example, $S$ would not contain both $(12)(13) = (123)$ because these are obviously not distinct. This concept of distinctness is important for free groups. \pause
 
-Define $S^{-1} = \{a^{-1}, b^{-1}, c^{-1}, ...\}$ so that each element from $S$ has an inverse in $S^{-1}$.
+Define $S^{-1} = \{a^{-1}, b^{-1}, c^{-1}, ...\}$ so that each element of $S$ has an inverse in $S^{-1}$. We define the set $W(S)$ to be the collection of all finite strings of the form $x_{1}x_{2}...x_{n}$ where each $x_{i} \in S \ \cup S^{-1}$. \pause
 
+The elements of $W(S)$ are called words from $S$. Notice that this set contains every possible combination of elements in $S$ and $S^{-1}$.
+\end{frame}
+
+\begin{frame}{Facts about $W(S)$}
+\begin{itemize}
+    \item<1-> Contains an empty word (word with no elements) which also acts as the identity.
+    \item<2-> Binary operation of $W(S)$ is concatenation. (e.g. $x_{1}x_{2}...x_{n}$ and $y_{1}y_{2}...y_{n}$ = $x_{1}x_{2}...x_{n}y_{1}y_{2}...y_{n}$
+    \item<3-> For any two words in $W(S)$ the binary operation is associative. 
+    $(x_{1}x_{2}...x_{n}y_{1}y_{2}...y_{n}) z_{1}z_{2}...z_{n} = x_{1}x_{2}...x_{n}(y_{1}y_{2}...y_{n} z_{1}z_{2}...z_{n})$
+    \item<4-> Inverses are not as simple as $aa^{-1}$ because $a$ is just a symbol so $aa^{-1}$ has no meaning.
+    \item<5-> We need to define inverses so $W(S)$ is a group; we can do this with equivalence classes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Proving an equivalence relation on $W(S)$}
+\begin{block}{Definition: Equivalence class of words}
+For any pair of elements $u$ and $v$ of $W(S)$, we say that $u$ is related to $v$ if $v$ can be obtained from $u$ by a finite sequence of insertions or deletions of words of the form $xx^{-1}$ or $x^{-1}x$ where $x \in S$.
+\end{block}
+
+\begin{block}{Example: $S = {\{a, b, c\}}$}
+$acc^{-1}b$ is equivalent to $ab$ because we can obtain $ab$ by a deletion of the form $cc^{-1}$ where $c \in S$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Proving an equivalence relation on $W(S)$}
+\textbf{Claim:} $u \sim v$ if $v$ can be obtained from $u$ by a finite sequence of insertions and deletions.
+\begin{proof}
+    To prove that $u \sim v$ is an equivalence relation we need to prove that it satisfies reflexivity, symmetry, and transitivity. \pause
+
+    We know $u, v \in W(S)$ so denote these as $u_{1}u_{2}...u_{n}$ and $v_{1}v_{2}...v_{n}$. \pause
+
+    \textit{Reflexivity ($u \sim u$):} $u_{1}u_{2}...u_{n} \sim u_{1}u_{2}...u_{n}$ because we can obtain $u_{1}u_{2}...u_{n}$ by applying no insertions or deletions. \pause
+
+    \textit{Symmetry ($u \sim v \implies v \sim u$):} If $u_{1}u_{2}...u_{n} \sim v_{1}v_{2}...v_{n}$ then there exists a finite sequence of insertions and deletions made to $u$ s.t. we obtain $v$, by definition. To get from $v$ to $u$ reverse the finite sequence which was used to obtain $v$ from $u$: delete the insertions and insert the deletions. \pause
+
+    \textit{Transitivity ($u \sim v, v \sim w \implies u \sim w$):} If $u_{1}u_{2}...u_{n} \sim v_{1}v_{2}...v_{n}$ and $v_{1}v_{2}...v_{n} \sim w_{1}w_{2}...w_{n}$ then there exist two different finite sequences of insertions and deletions. Concatenate these two sequences together; this result is exactly the relation $u \sim w$.
+\end{proof}
+\end{frame}
+
+\begin{frame}{Equivalence classes of $W(S)$ form a group}
+\begin{theorem}
+    Let S be a set of distinct symbols. For any word $u$ in $W(S)$, let $\bar{u}$ denote the set of all words in $W(S)$ equivalent to u (i.e., $\bar{u}$ is the equivalence class containing u). Then the set of all equivalence classes of elements of $W(S)$ is a group under the operation $\bar{u} \cdot \bar{v} = \bar{uv}$.
+\end{theorem}
+
+\begin{itemize}
+    \item<1-> The elements of this group are \textbf{sets}. These sets are equivalence classes that partition $W(S)$.
+    \item<2-> This group is called a free group on S because it contains no additional relations which do not follow from the group axioms. As an example, it does not contain something like $ab = ba$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Universal Mapping Property}
+\begin{theorem}
+    Every group is a homomorphic image of a free group.
+\end{theorem}
+
+\begin{proof}
+\only<1>{Let $G$ be a group, and let $S$ be a set of generators for $G$. Now, let $F$ be the free group on $S$.}
+
+\only<1>{Before we continue the proof, we develop some notation to distinguish between the words in $W(S)$ and elements of $G$. We will denote the word $x_{1}x_{2}...x_{n}$ in $W(S)$ by $(x_{1}x_{2}...x_{n})_{F}$ and the product in $G$ by $(x_{1}x_{2}...x_{n})_{G}$. $\overline{x_{1}x_{2}...x_{n}}$ is the equivalence class in $F$ containing the word $(x_{1}x_{2}...x_{n})_{F}$.}
+
+\only<1>{The elements $\overline{x_{1}x_{2}...x_{n}}$ and $(x_{1}x_{2}...x_{n})_{G}$ are different elements because the operations on $F$ and $G$ are different. We know that the operation of $F$ is the concatenation of the elements of the equivalence classes; the operation of $G$ is unknown.}
+
+\only<2>{Consider the mapping from $F$ to $G$ given by: $\phi \overline{(x_{1}x_{2}...x_{n})} = (x_{1}x_{2}...x_{n})_{G}$. This maps the product of elements which form an equivalence class in $F$ to the product in $G$.}
+
+\only<2>{Note that $\phi$ is well-defined, because inserting or deleting expressions of the form $xx^{-1}$ or $x^{-1}x$ in elements of $W(S)$ corresponds to inserting or deleting the identity in G. Recall that we said that the inverses of symbols in $F$ do not have any formal meaning \textit{but} a product $x^{-1}x$ does have meaning inside of a group; those elements combine to give the identity (by group axioms).}
+
+\only<3>{We can check that $\phi$ is operation-preserving, observe that $\phi \overline{(x_{1}x_{2}...x_{n})(y_{1}y_{2}...y_{n})} = \phi \overline{(x_{1}x_{2}...x_{n}y_{1}y_{2}...y_{n})} = (x_{1}x_{2}...x_{n}y_{1}y_{2}...y_{n})_{G} = (x_{1}x_{2}...x_{n})_{G}(y_{1}y_{2}...y_{n})_{G}$.}
+
+\only<3>{We move from the second to the third equality using the map $\phi$ and we get the last equality by the closure of $G$. Lastly, $\phi$ is onto G because $S$ generates $G$.}
+\alt<3>{\qedhere}{\phantom\qedhere}
+\end{proof}
+
+\only<3>{\textbf{Takeaway:} We have defined a free group on a set of generators and we found a homomorphic map which gives us the entire group. This shows that we can define a group only by its generating set.}
+\end{frame}
+
+\begin{frame}{Frame Title}
+    
 \end{frame}
 
 \begin{frame}{Appendix: Proof that the automorphism group is a group}
 \textbf{Claim: The automorphism group is a group.}
     \begin{proof}
-        Let Aut(G) be the automorphism group of G. We want to show that this is a group. First we note that the identity map (the map that takes each element of g in the domain to its corresponding g in the codomain) is an element of Aut(G) by definition. This map is 1-1, onto, and operation preserving. Thus, we have an identity element of Aut(G).
+        Let Aut(G) be the automorphism group of G. We want to show that this is a group. First, we note that the identity map (the map that takes each element of g in the domain to its corresponding g in the codomain) is an element of Aut(G) by definition. This map is 1-1, onto, and operation preserving. Thus, we have an identity element of Aut(G).
 
-        Next, let $\varphi: G \to G$, $\lambda: G \to G$ $\in$ Aut(G). We want to show that $(\varphi \circ \lambda)(g) \in G$. $\lambda (g) = g$ in $\lambda: G \to G$. So $g$ is an element of the codomain of $\lambda$ which is the input to $\varphi$. Then $\varphi(g) = g$ by its map. Thus, we have closure.
+        Next, let $\varphi: G \to G$, $\lambda: G \to G$ $\in$ Aut(G). We want to show that $(\varphi \circ \lambda)(g) \in G$. $\lambda (g) = g$ in $\lambda: G \to G$. So $g$ is an element of the codomain of $\lambda$ that is the input to $\varphi$. Then $\varphi(g) = g$ by its map. Thus, we have closure.
 
-        For inverses, let $\varphi: G \to G \in$ Aut(G). By definition of Aut(G) $\varphi$ is an isomorphism. By Theorem 6.2, property 1 (Gallian 10th edition) $\varphi^{-1}$ exists and is an isomorphism from $G \to G$. Lastly, the associative property is inherited from the definition of function composition.
+        For inverses, let $\varphi: G \to G \in$ Aut(G). By the definition of Aut(G) $\varphi$ is an isomorphism. By Theorem 6.2, property 1 (Gallian 10th edition) $\varphi^{-1}$ exists and is an isomorphism from $G \to G$. Lastly, the associative property is inherited from the definition of function composition.
     \end{proof}
 \end{frame}
-
 \end{document}
