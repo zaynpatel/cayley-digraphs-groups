@@ -20,14 +20,15 @@
 \frametitle{Goal}
 This talk demonstrates a relationship between \textbf{group} theory and \textbf{graph} theory. \bigskip
 
-To do this we will introduce Cayley DiGraphs of Groups which will allow us to visualize a group as a directed graph. \bigskip
+We will learn about Cayley DiGraphs of groups which visualize groups as a directed graphs. This visualization can help us understand properties of a group (e.g. the relations) but we will discover that Cayley DiGraphs give us many valuable theorems about groups we like (e.g. $\mathbb{Z}_{m} \oplus \mathbb{Z}_{n})$. \bigskip
 
-This visualization can help us understand properties of a group (e.g. the relations) but we will discover that Cayley DiGraphs give us many valuable theorems about groups we like (e.g. $\mathbb{Z}_{m} \oplus \mathbb{Z}_{n})$.
+Cayley DiGraphs begin with a group and represent it as a graph but we can also begin with a graph and relate it to a group. We will learn about the automorphism group of a graph and find isomorphisms between a graph automorphism and a well-known group. 
+
 \end{frame}
 
 \begin{frame}
 \frametitle{Topics covered}
-To accomplish our goal, we will cover the following: \bigskip
+To accomplish our goal, we cover the following: \bigskip
     \begin{itemize}
         \item Generators and relations
         \item Cayley DiGraphs of Groups
@@ -43,7 +44,7 @@ To accomplish our goal, we will cover the following: \bigskip
         \item<1-> Generators and relations are special elements we can combine, via the group operation, to get any other element in the group.
         \item<2-> Groups with a single element that combines with itself to generate the entire group are called \textbf{cyclic}. Recall that we can also have subgroups which are cyclic.
         \item<3-> Most groups we have worked with are not cyclic and have multiple generators. $\mathbb{Z}$, for example, has $\pm 1$ as a generator. $D_{4}$ has $R_{90}$ and $H$ as generators. 
-        \item<4-> We call the set of generators of G the \textbf{generating set} which is usually called S. For $D_{4}$, $S = \{R_{90}, H\}$.
+        \item<4-> We call the set of generators of $G$ the \textbf{generating set} which is usually called $S$. For $D_{4}$, $S = \{R_{90}, H\}$.
     \end{itemize}
 \end{frame}
 
@@ -51,7 +52,7 @@ To accomplish our goal, we will cover the following: \bigskip
 \frametitle{Generators and relations}
     \begin{itemize}
         \item<1-> Relation definition: the smallest set of equations that specify the conditions the generators must satisfy. In $D_{4}$ $R^{4} = H^{2} = (RH)^{2} = R_{0}$.
-        \item<2-> Because this is the minimal set we can derive all additional relations from this set.
+        \item<2-> Because this is the minimal set, we can derive all additional relations from this set.
         \item<3-> If two groups are defined by the same relations, they are isomorphic.
         \item<4-> Describing a group by its generators and relations is called a \textbf{group presentation}. The presentation for $D_{4}$ is $\langle R, H | R^{4} = H^{2} = (RH)^{2} = R_{0}\rangle$.
         \item<5-> In order to define generators and relations rigorously, we need a beautiful concept called free groups. More information is available in the appendix if you are interested.
@@ -189,7 +190,7 @@ Let $a$ = (12)(34) and $b$ = (123).
 $a^{2} = b^{3} = (ab)^{3} = (1)$
 \pause
 
-We can also derive other relations from this set of generators. \smallskip
+We can also derive other relations from this set of generators.
 
 $(ab)^{3} = ababab = bab = a^{-1}b^{-1}a^{-1} = (124)$
 
@@ -309,7 +310,7 @@ Now we look at the special case where gcd(m, n) $>$ 1.
 \begin{proof}
     \only <1>{By hypothesis we know that $m = nk$ for some $k$ $\in \mathbb{Z}$. We want to prove the claim using a coordinatized DiGraph similar to our previous theorem. Since the $gcd(m, n) >1 $ we have an external direct product of the form $\mathbb{Z}_{nk} \oplus \mathbb{Z}_{n}$. This product has $n^{2}k$ elements. The external direct product has $n^{2} = n \times n$ elements $k$ times. So the coordinatized DiGraph has $k$ $n \times n$ blocks.}
 
-    \only<2>{To form a Hamiltonian circuit we begin at the vertex $(0, 0)$ and cover the vertices in the first block by using the generator $(0, 1)$ until the last vertex in the first block is reached. Then apply the generator $(1, 0)$ to move vertically and continue this process of applying $(0, 1)$ to move horizontally and $(1, 0)$ to move vertically for each of the $k$ blocks until the vertex $(n - 1, 0)$ has been reached. We move vertically to the next block and repeat this process until the last vertex in the $k$th $n \times n$ block.}
+    \only<2>{To form a Hamiltonian circuit we begin at the vertex $(0, 0)$ and cover the vertices in the first block by using the generator $(0, 1)$ until the last vertex in the first row is reached. Then apply the generator $(1, 0)$ to move vertically and continue this process of applying $(0, 1)$ to move horizontally and $(1, 0)$ to move vertically for each of the $k$ blocks until the vertex $(n - 1, 0)$ has been reached. We move vertically to the next block and repeat this process until the last vertex in the $k$th $n \times n$ block.}
 
     \only<3>{Now, the left-most vertex in the last block is $(nk - 1, 0)$ and this needs to exit horizontally or vertically, by definition. Apply the generator $(1, 0)$ to this vertex. Then $(nk - 1, 0) + (1, 0) = (nk - 1 + 1, 0) = (nk, 0)$. Recall that our external direct product is $\mathbb{Z}_{nk} \oplus \mathbb{Z}_{k}$ so we can apply the group operation to $nk$ s.t. $nk \ mod \ (nk) = 0$.
 
@@ -334,19 +335,48 @@ Now we look at the special case where gcd(m, n) $>$ 1.
     \item<2-> In the relatively prime graph each vertex was in the coset $(a, b) + \langle (-1, 1)\rangle$. This is because in the relatively prime case there was no generator that gave us a multiple of a and b at the same time so that we can reduce it to the starting vertex: $(a, b)$. \textit{As an example, try adding either generator to the last element in the $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ DiGraph.}
     \item<3-> The two theorems we proved are about external direct products of \textit{two} $\mathbb{Z}$-mod groups but I wonder if we can generalize this theorem to Cayley DiGraphs with more than two groups.
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Abelian Groups Have Hamiltonian Paths}
+\begin{theorem}
+    Let $G$ be a finite Abelian group, and let $S$ be any generating set for $G$. Then $Cay(S:G)$ has a Hamiltonian path.
+\end{theorem}
+
+\begin{proof}
+    We use induction on $|S|$. If $|S| = 1$, say, $S = {\{a\}}$, then the digraph is just a circle with the labels $e, a, a^{2}, ..., a^{m-1}$, where $|a| = m$. There is a Hamiltonian path for this case; it is just the path around the circle.
+
+    Now assume that $|S| > 1$. Choose some $s \in S$. Let $T = S - {\{s\}}$. Define $H = \langle s_{1}, s_{2}, ..., s_{n-1} \rangle$ where $H \leq G$ and $H$ could be equal to $G$. $H$ contains all possible combinations of the generators $s_{1}, s_{2}, ..., s_{n-1}$, and although $H$ contains one less generator than $S$ we can still generate $G$ because it is possible that $S$ contains redundant generators. There is no constraint in the hypothesis that $S$ is the minimal set of generators.
+
+    Because $|T| \lt |S|$ and $H$ is a finite Abelian group, the induction hypothesis guarantees that there is a Hamiltonian path $(a_{1}, a_{2}, ..., a_{k})$ in $Cay(T:H)$.
+
+    We want to show that there is a Hamiltonian path in $Cay(S:G)$. We will take advantage of the fact that we have a subgroup $H$ and we can take any element $g \in G$ and form the left coset $gH$. Now note that $gH$ is an element of $G/H$. We can form the factor group $G/H$ because $G$ is Abelian and has Abelian subgroups like $H$ which are also normal.
+
+    Each $g \in G$ looks like $g = s^{i_1}_{1}s^{i_2}_{2}...s^{i_n}_{n}$ since any element in the group $G$ is a combination of elements in the generating set. So $gH = s^{i_1}_{1}s^{i_2}_{2}...s^{i_n}_{n}H$ which we can also write as $[(s^{i_{1}}_{1}s^{i_{2}}_{2}...s^{i_{n-1}}_{n-1})H] \cdot [s^{i_{n}}_{n}H]$.
+
+    But $(s^{i_{1}}_{1}s^{i_{2}}_{2}...s^{i_{n-1}}) \in H$ so this collapses to $H$ or $eH$ because of the coset property that $aH = H$ if $a \in H$. 
     
+    Thus, we get $eH \cdot s^{i_{n}}_{n}H = s^{i_{n}}_{n}H$; this follows from coset multiplication rules. So the elements of $G/H$ look like $s^{i_{n}}_{n}H$. The book notates this as $s^{n}H$ so we will use this notation for the remainder of the proof.
+
+    Now we can see that $G/H = \{s^{0}H, s^{1}H, ..., s^{n}H\}$. We conclude that $sH$ generates the factor group $G/H$ and also note that this partitions the group $G$ into cosets of the form $s^{0}H, s^{1}H, ..., s^{n}H$.
+
+    We will use these cosets to form the Hamiltonian path in $Cay(S:G)$. We begin in the first coset, H, and start from the identity element of $G$, which is in $H$ because $H \leq G$, the path given by $(a_{1}, a_{2}, ..., a_{k})$ visits each element of H exactly once because $(a_{1}, a_{2}, ..., a_{k})$ is a Hamiltonian path in $Cay(T:H)$. Because we partitioned G into these $n$ cosets we are treating each distinct coset as a $Cay(T:H)$ digraph. When we do this the inductive hypothesis says that there exists a Hamiltonian path in $Cay(T:H)$, the generator $S$ moves to the next coset and we apply the same idea until the last element in the last coset.
+
+    The vertices of $Cay(S:G)$ are elements of $G$ and these elements are in exactly one coset $sH^{i}$ because of the partition fact referenced earlier. Since we visited each element in each coset $sH^{i}$ this implies that we visited each vertex of $Cay(S:G)$ exactly once. Thus, we have a Hamiltonian path. 
+\end{proof}
 \end{frame}
 
 \begin{frame}{More group theory and graph theory connections}
-So far we have associated a graph with a group but we can go the other way. That is we can associate a group with every graph. This group is called the automorphism group of a graph.
+So far we have associated a graph with a group but we can go the other way. That is we can associate a group with every graph. This group is called the automorphism group of a graph. \pause
 
-We will be talking about the automorphism group of a graph so we need to define new terms. From group theory we know that an automorphism is an isomorphism from a group to itself. The set of automorphisms of a group forms a group called the \textbf{automorphism group} denoted Aut(G). The elements of Aut(G) are group isomorphisms. The appendix contains a proof that the automorphism group is a group under function composition.
+We will be talking about the automorphism group of a graph, so we need to define new terms. From group theory, we know that an automorphism is an isomorphism from a group to itself. The set of automorphisms of a group forms a group called the \textbf{automorphism group} denoted $Aut(G)$. The elements of $Aut(G)$ are group isomorphisms. 
+
+The appendix contains a proof that the automorphism group is a group under function composition.
 \end{frame}
 
 \begin{frame}{Graph Isomorphisms and Automorphisms}
 \begin{block}{Definition: Graph Isomorphisms and Automorphisms}
 \begin{itemize}
-\item<1-> \textit{Graph isomorphism:} An isomorphism between graphs G and H is a bijection $\phi: V(G) \to V(H)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(H)$. Notice that this defines an isomorphism between the vertex sets of the graphs. In examples, we will see that the degree of the vertex also matters in defining an isomorphism.
+\item<1-> \textit{Graph isomorphism:} An isomorphism between graphs $G$ and $H$ is a bijection $\phi: V(G) \to V(H)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(H)$. Notice that this defines an isomorphism between the vertex sets of the graphs. In examples, we will see that the degree of the vertex also matters in defining an isomorphism.
 \item<2-> \textit{Graph automorphism:} An isomorphism from a graph to itself. Formally, it is a bijection $\phi: V(G) \to V(G)$ s.t. $uv \in E(G)$ iff $\phi(u)\phi(v) \in E(G)$.
 \end{itemize}
 \end{block}
@@ -371,13 +401,13 @@ We will be talking about the automorphism group of a graph so we need to define 
 
 We will denote the identity automorphism as $\epsilon$ with the map $u \to u, v \to v, x \to x, y \to y$. \pause
 
-$\alpha$ has the map $u \to y, y \to u, v \to x, x \to v, w \to w$. We map $u \to y$ because these are the only elements of degree one and $v \to x$ because these were adjacent to the elements of degree one. So, Aut(G) = $\{\epsilon, \alpha\}$. \pause
+$\alpha$ has the map $u \to y, y \to u, v \to x, x \to v, w \to w$. We map $u \to y$ because these are the only elements of degree one and $v \to x$ because these were adjacent to the elements of degree one. So, $Aut(G)$ = $\{\epsilon, \alpha\}$. \pause
 
-We can compose these using the group operation. But recall that Aut(G) is a group and we know, from group theory, that the non-identity element is its own inverse in groups with two elements. Thus, $\alpha \circ \alpha = \epsilon$.
+We can compose these using the group operation. But recall that $Aut(G)$ is a group and we know, from group theory, that the non-identity element is its own inverse in groups with two elements. Thus, $\alpha \circ \alpha = \epsilon$.
 \end{frame}
 
 \begin{frame}{Finding the automorphisms of a graph G}
-Now that we know the elements of Aut(G) and their products we can draw a Cayley table.
+Now that we know the elements of $Aut(G)$ and their products we can draw a Cayley table.
 
 \noindent\begin{tabular}{c | c c c}
      & $\epsilon$ & $\alpha$ \\
@@ -431,9 +461,9 @@ detect and eliminate redundant branches in the search.}
 \begin{frame}{Appendix: Free groups}
 The point of this section is to add a rigorous explanation to the generators and relations discussion that began the talk. To begin, we will define some terms about free groups, which is the set that contains generators and relations.
 
-Let $S = \{a, b, c, ...\}$ be a set of distinct symbols. As an example, $S$ would not contain both $(12)(13) = (123)$ because these are obviously not distinct. This concept of distinctness is important for free groups. \pause
+Let $S = \{a, b, c, ...\}$ be a set of distinct symbols. As an example from permutation groups, $S$ would not contain both $(12)(13) = (123)$ because these are obviously not distinct. This concept of distinctness is important for free groups. \pause
 
-Define $S^{-1} = \{a^{-1}, b^{-1}, c^{-1}, ...\}$ so that each element of $S$ has an inverse in $S^{-1}$. We define the set $W(S)$ to be the collection of all finite strings of the form $x_{1}x_{2}...x_{n}$ where each $x_{i} \in S \ \cup S^{-1}$. \pause
+Define $S^{-1} = \{a^{-1}, b^{-1}, c^{-1}, ...\}$ so that each element of $S$ has an inverse in $S^{-1}$. We define the set $W(S)$ to be the collection of all finite strings of the form $x_{1}x_{2}...x_{n}$ where each $x_{i} \in S \cup S^{-1}$. \pause
 
 The elements of $W(S)$ are called words from $S$. Notice that this set contains every possible combination of elements in $S$ and $S^{-1}$.
 \end{frame}
@@ -508,11 +538,7 @@ $acc^{-1}b$ is equivalent to $ab$ because we can obtain $ab$ by a deletion of th
 \alt<3>{\qedhere}{\phantom\qedhere}
 \end{proof}
 
-\only<3>{\textbf{Takeaway:} We have defined a free group on a set of generators and we found a homomorphic map which gives us the entire group. This shows that we can define a group only by its generating set.}
-\end{frame}
-
-\begin{frame}{Frame Title}
-    
+\only<3>{\textbf{Takeaway:} We have defined a free group on a set of generators and we found a homomorphic map which maps \textit{onto} the group G. This shows that we can "hit" every element in G by}
 \end{frame}
 
 \begin{frame}{Appendix: Proof that the automorphism group is a group}
