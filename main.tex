@@ -343,25 +343,26 @@ Now we look at the special case where gcd(m, n) $>$ 1.
 \end{theorem}
 
 \begin{proof}
-    We use induction on $|S|$. If $|S| = 1$, say, $S = {\{a\}}$, then the digraph is just a circle with the labels $e, a, a^{2}, ..., a^{m-1}$, where $|a| = m$. There is a Hamiltonian path for this case; it is just the path around the circle.
+    \only<1>{We use induction on $|S|$. If $|S| = 1$, say, $S = {\{a\}}$, then the digraph is just a circle with the labels $e, a, a^{2}, ..., a^{m-1}$, where $|a| = m$. There is a Hamiltonian path for this case; it is just the path around the circle.}
 
-    Now assume that $|S| > 1$. Choose some $s \in S$. Let $T = S - {\{s\}}$. Define $H = \langle s_{1}, s_{2}, ..., s_{n-1} \rangle$ where $H \leq G$ and $H$ could be equal to $G$. $H$ contains all possible combinations of the generators $s_{1}, s_{2}, ..., s_{n-1}$, and although $H$ contains one less generator than $S$ we can still generate $G$ because it is possible that $S$ contains redundant generators. There is no constraint in the hypothesis that $S$ is the minimal set of generators.
+    \only<1>{Now assume that $|S| > 1$. Choose some $s \in S$. Let $T = S - {\{s\}}$. Define $H = \langle s_{1}, s_{2}, ..., s_{n-1} \rangle$ where $H \leq G$ and $H$ could be equal to $G$. $H$ contains all possible combinations of the generators $s_{1}, s_{2}, ..., s_{n-1}$, and although $H$ contains one less generator than $S$ we can still generate $G$ because it is possible that $S$ contains redundant generators. There is no constraint in the hypothesis that $S$ is the minimal set of generators.}
 
-    Because $|T| \lt |S|$ and $H$ is a finite Abelian group, the induction hypothesis guarantees that there is a Hamiltonian path $(a_{1}, a_{2}, ..., a_{k})$ in $Cay(T:H)$.
+    \only<2>{Because $|T|$ is less than $|S|$ and $H$ is a finite Abelian group, the inductive hypothesis guarantees that there is a Hamiltonian path $(a_{1}, a_{2}, ..., a_{k})$ in $Cay(T:H)$.}
 
-    We want to show that there is a Hamiltonian path in $Cay(S:G)$. We will take advantage of the fact that we have a subgroup $H$ and we can take any element $g \in G$ and form the left coset $gH$. Now note that $gH$ is an element of $G/H$. We can form the factor group $G/H$ because $G$ is Abelian and has Abelian subgroups like $H$ which are also normal.
+    \only<2>{We want to show that there is a Hamiltonian path in $Cay(S:G)$. We will take advantage of the fact that we have a subgroup $H$ and we can take any element $g \in G$ and form the left coset $gH$. Now note that $gH$ is an element of $G/H$. We can form this factor group because $G$ is Abelian and its subgroups $H$ are also Abelian and normal.}
 
-    Each $g \in G$ looks like $g = s^{i_1}_{1}s^{i_2}_{2}...s^{i_n}_{n}$ since any element in the group $G$ is a combination of elements in the generating set. So $gH = s^{i_1}_{1}s^{i_2}_{2}...s^{i_n}_{n}H$ which we can also write as $[(s^{i_{1}}_{1}s^{i_{2}}_{2}...s^{i_{n-1}}_{n-1})H] \cdot [s^{i_{n}}_{n}H]$.
+    \only<2>{Each $g \in G$ looks like $g = s^{i_1}_{1}s^{i_2}_{2}...s^{i_n}_{n}$ since any element in $G$ is a combination of elements in the generating set. So $gH = s^{i_1}_{1}s^{i_2}_{2}...s^{i_n}_{n}H = [(s^{i_{1}}_{1}s^{i_{2}}_{2}...s^{i_{n-1}}_{n-1})H] \cdot [s^{i_{n}}_{n}H]$.}
 
-    But $(s^{i_{1}}_{1}s^{i_{2}}_{2}...s^{i_{n-1}}) \in H$ so this collapses to $H$ or $eH$ because of the coset property that $aH = H$ if $a \in H$. 
+    \only<3>{But $(s^{i_{1}}_{1}s^{i_{2}}_{2}...s^{i_{n-1}}) \in H$ so this collapses to $H$ or $eH$ because of the coset property that $aH = H$ if $a \in H$.}
     
-    Thus, we get $eH \cdot s^{i_{n}}_{n}H = s^{i_{n}}_{n}H$; this follows from coset multiplication rules. So the elements of $G/H$ look like $s^{i_{n}}_{n}H$. The book notates this as $s^{n}H$ so we will use this notation for the remainder of the proof.
+    \only<3>{Thus, we get $eH \cdot s^{i_{n}}_{n}H = s^{i_{n}}_{n}H$; this follows from coset multiplication rules. So the elements of $G/H$ look like $s^{i_{n}}_{n}H$. The book notates this as $s^{n}H$ so we will use this notation for the remainder of the proof.}
 
-    Now we can see that $G/H = \{s^{0}H, s^{1}H, ..., s^{n}H\}$. We conclude that $sH$ generates the factor group $G/H$ and also note that this partitions the group $G$ into cosets of the form $s^{0}H, s^{1}H, ..., s^{n}H$.
+    \only<3>{Now we can see that $G/H = \{s^{0}H, s^{1}H, ..., s^{n}H\}$. We conclude that $sH$ generates the factor group $G/H$ and also note that this partitions the group $G$ into cosets of the form $s^{0}H, s^{1}H, ..., s^{n}H$.}
 
-    We will use these cosets to form the Hamiltonian path in $Cay(S:G)$. We begin in the first coset, H, and start from the identity element of $G$, which is in $H$ because $H \leq G$, the path given by $(a_{1}, a_{2}, ..., a_{k})$ visits each element of H exactly once because $(a_{1}, a_{2}, ..., a_{k})$ is a Hamiltonian path in $Cay(T:H)$. Because we partitioned G into these $n$ cosets we are treating each distinct coset as a $Cay(T:H)$ digraph. When we do this the inductive hypothesis says that there exists a Hamiltonian path in $Cay(T:H)$, the generator $S$ moves to the next coset and we apply the same idea until the last element in the last coset.
+    \only<4>{We will use these cosets to form the Hamiltonian path in $Cay(S:G)$. We begin in the first coset, H, and start from the identity element of $G$, which is in $H$ because $H \leq G$, the path given by $(a_{1}, a_{2}, ..., a_{k})$ visits each element of H exactly once because $(a_{1}, a_{2}, ..., a_{k})$ is a Hamiltonian path in $Cay(T:H)$. Because we partitioned G into these $n$ cosets we are treating each distinct coset as a $Cay(T:H)$ digraph. When we do this the inductive hypothesis says that there exists a Hamiltonian path in $Cay(T:H)$, the generator $S$ moves to the next coset and we apply the same idea until the last element in the last coset.}
 
-    The vertices of $Cay(S:G)$ are elements of $G$ and these elements are in exactly one coset $sH^{i}$ because of the partition fact referenced earlier. Since we visited each element in each coset $sH^{i}$ this implies that we visited each vertex of $Cay(S:G)$ exactly once. Thus, we have a Hamiltonian path. 
+    \only<5>{The vertices of $Cay(S:G)$ are elements of $G$ and these elements are in exactly one coset $sH^{i}$ because of the partition fact referenced earlier. Since we visited each element in each coset $sH^{i}$ this implies that we visited each vertex of $Cay(S:G)$ exactly once. Thus, we have a Hamiltonian path.}
+\alt<5>{\qedhere}{\phantom\qedhere}
 \end{proof}
 \end{frame}
 
@@ -538,7 +539,46 @@ $acc^{-1}b$ is equivalent to $ab$ because we can obtain $ab$ by a deletion of th
 \alt<3>{\qedhere}{\phantom\qedhere}
 \end{proof}
 
-\only<3>{\textbf{Takeaway:} We have defined a free group on a set of generators and we found a homomorphic map which maps \textit{onto} the group G. This shows that we can "hit" every element in G by}
+\only<3>{\textbf{Takeaway:} We have defined a free group on a set of generators and we found a homomorphic map which maps \textit{onto} the group G. This shows that we can "hit" every element in G without any relations.}
+\end{frame}
+
+\begin{frame}{Universal Factor Group Property}
+    \only<1>{\textbf{Takeaway 2:} The Universal Mapping Property (UMP) provided an onto function from $F \to G$ but this map can be smaller than $G$ (if $G$ is not taken to be the generating set) or larger than $G$. It may be larger since $F$ contains all combinations of symbols, and some of these symbols might be redundant based on the relations of $G$.}
+
+    \only<1>{If we want to reconstruct $G$ from a free group, we need the following theorem.}
+
+    \only<1>{\begin{theorem}
+        Every group is isomorphic to a factor group of a free group.
+    \end{theorem}}
+
+    \only<1>{We will not prove this; let us instead understand the theorem.}
+
+    \begin{block}{Understand the UFG Property}
+        \only<1> {Recall the First Isomorphism Theorem for groups: Let $\phi$ be a group homomorphism from $G$ to $\bar{G}$. Then the mapping from $G/Ker\phi$, given by $gKer \to phi(g)$, is an isomorphism. In symbols $G/Ker \phi \cong \phi(G)$.}
+
+        \only<2>{We want a homomorphism so we can use the First Isomorphism Theorem for groups. To get a homomorphism use the identity map $f: G \to G$. Every map of sets $f: G \to G$ extends to a unique homomorphism $\phi: F \to G$ if the generators of the domain are sent to the generators of the codomain. But this is obviously the case in $f$ since each element of $G$ is sent to itself.}
+
+        \only<2>{Now we have a homomorphism $\phi$. The definition of $Ker\phi = \{f \in F | \phi(f) = e_{G}\}$ says that we take any element of the free group and the homomorphism sends this element to the group identity.}
+
+        \only<3>{We saw something like this earlier. When we first began talking about relations these were defined as $\langle element = element = ... = e \rangle$. From the takeaway of UMP we know that $F$ contains all combinations of elements of $G$ with no additional relations. But the $Ker\phi$ is naturally the set of relations for $G$ since it sends these combinations from $F$ to the groups' identity.}
+
+        \only<3>{Thus, $F/Ker\phi \cong G$.}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Generators and Relations Definition}
+    We now have enough understanding to define generators and relations.
+    \begin{block}{Generators and Relations}
+        Let $G$ be a group generated by some subset $A = \{a_{1}, a_{2}, ..., a_{n}\}$ and let $F$ be the free group on $A$. Let $W = {w_{1}, w_{2}, ..., w_{t}}$ be a subset of $F$ and let $N$ be the smallest normal subgroup of $F$ containing $W$. We say that $G$ is given by the generators $a_{1}, a_{2}, ..., a_{n}$ and the relations $w_{1}, w_{2}, ..., w_{t} = e$ if there is an isomorphism from $F/N$ onto $G$ that carries $a_{i}N$ to $a_{i}$.
+    \end{block}
+
+    \pause
+
+    \begin{itemize}
+        \item We define the free group on a set of distinct generators $A$.
+        \item Relations are in a normal subgroup ($Ker\phi$ is normal so this aligns with First Isomorphism Theorem intuition).
+        \item We needed the quotient group corollary to define an isomorphism from the factor group with $F \to G$.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Appendix: Proof that the automorphism group is a group}
