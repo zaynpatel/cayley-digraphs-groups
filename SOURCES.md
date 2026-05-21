@@ -1,8 +1,8 @@
 In addition to Joseph A. Gallian's *Contemporary Abstract Algebra (10th edition)*, I used the following resources to prepare for this talk:
 
 - [Directed Graph Terminology (Whitman College)](https://www.whitman.edu/mathematics/cgt_online/book/section05.11.html#:~:text=A%20directed%20graph%2C%20also%20called,no%20loops%20or%20multiple%20arcs.)
-- [$S_{3}$ generators and relations (University of Bristol)](https://people.maths.bris.ac.uk/~matyd/GroupNames/1/S3.html)
-- [$A_{4}$ generators and relations (Mathematics Stack Exchange)](https://math.stackexchange.com/questions/7144/generators-and-relations-for-a-4)
+- [S_3 generators and relations (University of Bristol)](https://people.maths.bris.ac.uk/~matyd/GroupNames/1/S3.html)
+- [A_4 generators and relations (Mathematics Stack Exchange)](https://math.stackexchange.com/questions/7144/generators-and-relations-for-a-4)
 - [Generators and relations (Denton, Google Research)](https://math.libretexts.org/Bookshelves/Abstract_and_Geometric_Algebra/Introduction_to_Algebraic_Structures_(Denton)/03%3A_Groups_II/3.01%3A_Generating_Sets)
 - [Automorphism group of graphs (East Tennessee State University)](https://faculty.etsu.edu/beelerr/automorph-supp.pdf)
 - [Number of automorphisms for a graph (Mathematics Stack Exchange)](https://math.stackexchange.com/questions/3537834/number-of-automorphisms-in-a-graph)

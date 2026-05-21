@@ -20,18 +20,22 @@
 \frametitle{Goal}
 This talk demonstrates a relationship between \textbf{group} theory and \textbf{graph} theory. \bigskip
 
-We will learn about Cayley Digraphs of groups which visualize groups as a directed graphs. This visualization can help us understand properties of a group (e.g. the relations) but we will discover that Cayley Digraphs give us many valuable theorems about groups we like (e.g. $\mathbb{Z}_{m} \oplus \mathbb{Z}_{n})$. \bigskip
+\pause
 
-Cayley Digraphs begin with a group and represent it as a graph but we can also begin with a graph (non-Cayley) and relate it to a group. We will learn about the automorphism group of a graph and find isomorphisms between a graph automorphism and a well-known group. 
+We will learn about Cayley digraphs of groups which visualize groups as a directed graphs. This visualization can help us understand properties of a group (e.g. the relations) but we will discover that Cayley digraphs give us many valuable theorems about groups we like (e.g. $\mathbb{Z}_{m} \oplus \mathbb{Z}_{n})$. \bigskip
+
+\pause
+
+Cayley digraphs begin with a group and represent it as a graph but we can also begin with a graph (non-Cayley) and relate it to a group. We will learn about the automorphism group of a graph and find isomorphisms between a graph automorphism and a well-known group. 
 \end{frame}
 
 \begin{frame}
 \frametitle{Topics covered}
-To accomplish our goal, we cover the following: \bigskip
+To accomplish our goal, we will cover the following: \bigskip
     \begin{itemize}
         \item Generators and relations
-        \item Cayley Digraphs of Groups
-        \item Hamiltonicity of Digraphs
+        \item Cayley digraphs of Groups
+        \item Hamiltonicity of digraphs
         \item Graph theory meets groups theory
         \item Generators and relations rigor
     \end{itemize}
@@ -42,7 +46,7 @@ To accomplish our goal, we cover the following: \bigskip
     \begin{itemize}
         \item<1-> Generators and relations are special elements we can combine, via the group operation, to get any other element in the group.
         \item<2-> Groups with a single element that combines with itself to generate the entire group are called \textbf{cyclic}. Recall that we can also have subgroups which are cyclic.
-        \item<3-> Most groups we have worked with are not cyclic and have multiple generators. $\mathbb{Z}$, for example, has $\pm 1$ as a generator. $D_{4}$ has $R_{90}$ and $H$ as generators. 
+        \item<3-> Most groups we have worked with are not cyclic and have multiple generators. $D_{4}$ has $R_{90}$ and $H$ as generators. 
         \item<4-> We call the set of generators of $G$ the \textbf{generating set} which is usually denoted $S$. For $D_{4}$, $S = \{R_{90}, H\}$.
     \end{itemize}
 \end{frame}
@@ -59,43 +63,47 @@ To accomplish our goal, we cover the following: \bigskip
 \end{frame}
 
 \begin{frame}
-\frametitle{Cayley Digraphs of Groups}
+\frametitle{Cayley digraphs of Groups}
 
 \textit{Purpose:} Visualize a group given by generators and relations
 
 These are directed graphs where vertices are group elements and arcs, which are the generators, connect the vertices. \medskip
 
+\pause
+
 \textit{Note:} Edges are typically used to describe vertex connections in \textbf{undirected} graphs while arcs describe connections in \textbf{directed graphs}.
+
+\pause
 
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{images/Z_6_Digraph.png}
-        \caption{$\mathbb{Z}_{6}$ Digraph}
-        \label{fig:Z_6 Digraph}
+        \includegraphics[width=\textwidth]{images/Z_6_digraph.png}
+        \caption{$\mathbb{Z}_{6}$ digraph}
+        \label{fig:Z_6 digraph}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{images/A_4_Digraph.png}
-        \caption{$A_{4}$ Digraph}
-        \label{fig:A_4 Digraph}
+        \includegraphics[width=\textwidth]{images/A_4_digraph.png}
+        \caption{$A_{4}$ digraph}
+        \label{fig:A_4 digraph}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/S_3.png}
-        \caption{$S_{3}$ Digraph}
-        \label{fig:Z_6 Digraph}
+        \caption{$S_{3}$ digraph}
+        \label{fig:Z_6 digraph}
     \end{subfigure}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{Cayley Digraphs of Groups}
+\frametitle{Cayley digraphs of Groups}
 
-Example 8 shows us that we can make Digraphs for infinite groups too.
+Example 8 shows us that we can make digraphs for infinite groups too.
 
 
 \begin{figure}
@@ -103,30 +111,30 @@ Example 8 shows us that we can make Digraphs for infinite groups too.
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/Z_3_Z_2.png}
-        \caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ Digraph}
-        \label{fig:Z_3 x Z_2 Digraph}
+        \caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ digraph}
+        \label{fig:Z_3 x Z_2 digraph}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{images/D_4_Digraph.png}
-        \caption{$D_{4}$ Digraph}
-        \label{fig:D_4 Digraph}
+        \includegraphics[width=\textwidth]{images/D_4_digraph.png}
+        \caption{$D_{4}$ digraph}
+        \label{fig:D_4 digraph}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{images/Infinite_Digraph.png}
-        \caption{Infinite Digraph}
+        \includegraphics[width=\textwidth]{images/Infinite_digraph.png}
+        \caption{Infinite digraph}
         \label{fig: Infinite Vertices}
     \end{subfigure}
 \end{figure}
 \end{frame}
 
 \begin{frame}
-\frametitle{Cayley Digraphs of Groups}
-\begin{block}{Definition: Cayley Digraph of a Group}
-Let $G$ be a finite group and let $S$ be a set of generators for $G$. We define a Digraph $Cay(S:G)$, called the Cayley Digraph of $G$ with the generating set $S$, as follows:
+\frametitle{Cayley digraphs of Groups}
+\begin{block}{Definition: Cayley digraph of a Group}
+Let $G$ be a finite group and let $S$ be a set of generators for $G$. We define a digraph $Cay(S:G)$, called the Cayley digraph of $G$ with the generating set $S$, as follows:
     \begin{enumerate}
         \item Each element of $G$ is a vertex of $Cay(S:G)$
         \item For each $x$ and $y$ in $G$, there is an arc from $x$ to $y$ if and only if $xs = y$ for some $s$ $\in S$.
@@ -135,21 +143,23 @@ Let $G$ be a finite group and let $S$ be a set of generators for $G$. We define 
 \end{frame}
 
 \begin{frame}
-\frametitle{Cayley Digraphs of Groups}
+\frametitle{Cayley digraphs of Groups}
 \begin{block}{Example}
-Let us look at $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ as an example. We need to check the first condition: each element of G is a vertex of Cay(S:G). \smallskip
+Let us look at $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ as an example. We need to check the first condition: each element of $G$ is a vertex of $Cay(S:G)$. \smallskip
 
 $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ = \{(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1)\} \smallskip
+
+\pause
 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{images/Z_3_Z_2.png}
-\caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ Digraph}
+\caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ digraph}
 \end{figure}
 \end{block}
 \end{frame}
 
-\begin{frame}{Cayley Digraphs of Groups}
+\begin{frame}{Cayley digraphs of Groups}
 The second condition says that $\exists$ arc iff an element of the group multiplied by some generator produces a new element of the group. \pause \smallskip
 Some examples of this in $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ are: \smallskip
 
@@ -160,19 +170,20 @@ $(1, 1) \cdot (0, 1)$ = (1 + 0, 1 + 1) = (1 mod(3), 2 mod(2)) = (1, 0)
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{images/Z_3_Z_2.png}
-\caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ Digraph}
+\caption{$\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ digraph}
 \end{figure}
 
 \end{frame}
 
-\begin{frame}{Cayley Digraphs of Groups}
-How do we find relations for a group and how might a graph help us do this?
+\begin{frame}{Cayley digraphs of Groups}
+How do we find the relations for a group, and how might a graph help us do this?
+\medskip
 \pause
 
 In general, finding the relations for a group is a problem in computational group theory. There are specific algorithms that search the "group space" to find and confirm relations in large groups. We will not cover these today. Instead, we will look at two finite groups whose relations we can see by tracing the arcs.
 \end{frame}
 
-\begin{frame}{Cayley Digraphs of Groups}
+\begin{frame}{Cayley digraphs of Groups}
 
 We will use $A_{4}$ as an example and let us begin by finding the relations between the generators and the identity element. \smallskip
 
@@ -180,8 +191,8 @@ Let $a = (12)(34)$ and $b = (123)$.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.3]{images/A_4_Digraph.png}
-\caption{$A_{4}$ Digraph}
+\includegraphics[scale=0.3]{images/A_4_digraph.png}
+\caption{$A_{4}$ digraph}
 \end{figure}
 
 \pause
@@ -194,16 +205,16 @@ $(ab)^{3} = ababab = bab = a^{-1}b^{-1}a^{-1} = (124)$
 
 \end{frame}
 
-\begin{frame}{Cayley Digraphs of Groups}
+\begin{frame}{Cayley digraphs of Groups}
 You may be wondering how to know the complete set of relations for a group. In my understanding, this is an undecidable problem. \medskip
 \pause
 
 Gallian mentions that there are cases where one group can be defined with two different sets of generators and relations. So another undecidable problem is determining whether these groups are isomorphic to each other. \medskip
 \pause
 
-Lastly, note that defining a group by its presentation does not provide information on the cardinality of the group. Consider the group presentation for $A_{4}: \langle a^{2} = b^{3} = (ab)^{3} = e \rangle$. If we did not know prior information about the cardinality of $A_{4}$ we would not know if it was finite or infinite. \medskip
+Lastly, note that defining a group by its presentation does not provide information on the cardinality of the group. Consider the group presentation for $A_{4}: \langle a, b | a^{2} = b^{3} = (ab)^{3} = e \rangle$. If we did not know prior information about the cardinality of $A_{4}$ we would not know if it was finite or infinite. \medskip
 
-As another example $\mathbb{Z}$ has the group presentation $\langle x \rangle$ and we know this is infinite.
+$\mathbb{Z}$ has the group presentation $\langle x \rangle$ and we know this is infinite.
 \end{frame}
 
 \begin{frame}{Graph Theory meets Group Theory}
@@ -218,15 +229,15 @@ As another example $\mathbb{Z}$ has the group presentation $\langle x \rangle$ a
         \begin{subfigure}[b]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/Z_32_Ham_Path.png}
-        \caption{Hamiltonian Path in the $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ Digraph}
-        \label{fig:Z_3 x Z_2 HamPath Digraph}
+        \caption{Hamiltonian Path in the $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ digraph}
+        \label{fig:Z_3 x Z_2 HamPath digraph}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{images/Q_4_Hamil_Circuit.png}
-        \caption{Hamiltonian Circuit in the $Q_{4}$ Digraph}
-        \label{fig:Q_{4} Digraph}
+        \caption{Hamiltonian Circuit in the $Q_{4}$ digraph}
+        \label{fig:Q_{4} digraph}
         \end{subfigure}
         \hfill
     \end{figure}
@@ -252,16 +263,16 @@ Thus we have shown that for two different, arbitrary starting vertices the same 
 \end{frame}
 
 \begin{frame}{Hamiltonian circuits in Cay($\{(1, 0), (0, 1)\}: \mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$)}
-In our examples we looked at $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$, let us investigate if there is a Hamiltonian circuit in its Cayley Digraph. We will first consider the case where gcd(m, n) = 1. 
+In our examples we looked at $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$, let us investigate if there is a Hamiltonian circuit in its Cayley digraph. We will first consider the case where gcd(m, n) = 1. 
 
 \textbf{Claim:} There is no Hamiltonian circuit in $\mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$ when gcd(m, n) = 1.
 \pause
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\linewidth]{images/Z_m_Z_n_Digraph.png}
-    \caption{$\mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$ Digraph as a rectangular grid}
-    \label{fig:Z_m x Z_n Digraph}
+    \includegraphics[width=0.5\linewidth]{images/Z_m_Z_n_digraph.png}
+    \caption{$\mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$ digraph as a rectangular grid}
+    \label{fig:Z_m x Z_n digraph}
 \end{figure}
 \end{frame}
 
@@ -308,7 +319,7 @@ Now we look at the special case where $gcd(m, n)$ $>$ $1$.
 
 \textbf{Claim:} Cay($\{(1, 0), (0, 1)\}): \mathbb{Z}_{m} \oplus \mathbb{Z}_{n}$ has a Hamiltonian circuit when $n \mid m$.
 \begin{proof}
-    \only <1>{By hypothesis we know that $m = nk$ for some $k$ $\in \mathbb{Z}$. We want to prove the claim using a coordinatized digraph similar to our previous theorem. Since the $gcd(m, n) >1 $ we have an external direct product of the form $\mathbb{Z}_{nk} \oplus \mathbb{Z}_{n}$. This product has $n^{2}k$ elements. The external direct product has $n^{2} = n \times n$ elements $k$ times. So the coordinatized Digraph has $k$ $n \times n$ blocks.}
+    \only <1>{By hypothesis we know that $m = nk$ for some $k$ $\in \mathbb{Z}$. We want to prove the claim using a coordinatized digraph similar to our previous theorem. Since the $gcd(m, n) >1 $ we have an external direct product of the form $\mathbb{Z}_{nk} \oplus \mathbb{Z}_{n}$. This product has $n^{2}k$ elements. The external direct product has $n^{2} = n \times n$ elements $k$ times. So the coordinatized digraph has $k$ $n \times n$ blocks.}
 
     \only<2>{To form a Hamiltonian circuit we begin at the vertex $(0, 0)$ and cover the vertices in the first block by using the generator $(0, 1)$ until the last vertex in the first row is reached. Then apply the generator $(1, 0)$ to move vertically and continue this process of applying $(0, 1)$ to move horizontally and $(1, 0)$ to move vertically for each of the $k$ blocks until the vertex $(n - 1, 0)$ has been reached. We move vertically to the next block and repeat this process until the last vertex in the $k$th $n \times n$ block.}
 
@@ -322,9 +333,9 @@ Now we look at the special case where $gcd(m, n)$ $>$ $1$.
 \begin{frame}{Visualizing our proof with $\mathbb{Z}_{3k} \oplus \mathbb{Z}_{3}$}
     \begin{figure}
         \centering
-        \includegraphics[width=0.5\linewidth]{images/Z_3k_3_Digraph.png}
-        \caption{Coordinatized $\mathbb{Z}_{3k} \oplus \mathbb{Z}_{3}$ Digraph}
-        \label{fig:Z_3k_3_Digraph}
+        \includegraphics[width=0.5\linewidth]{images/Z_3k_3_digraph.png}
+        \caption{Coordinatized $\mathbb{Z}_{3k} \oplus \mathbb{Z}_{3}$ digraph}
+        \label{fig:Z_3k_3_digraph}
     \end{figure}
 \end{frame}
 
@@ -332,7 +343,7 @@ Now we look at the special case where $gcd(m, n)$ $>$ $1$.
 
 \begin{itemize}
     \item<1-> The graph in $gcd(m, n) = 1$ was $m \times n$ while the graph in $gcd(m, n) > 1$ was $kn \times n$.
-    \item<2-> In the relatively prime graph each vertex was in the coset $(a, b) + \langle (-1, 1)\rangle$. This is because in the relatively prime case there was no generator that gave us a multiple of a and b at the same time so that we can reduce it to the starting vertex: $(a, b)$. \textit{As an example, try adding either generator to the last element in the $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ digraph.}
+    \item<2-> In the relatively prime graph each vertex was in the coset $(a, b) + \langle (-1, 1)\rangle$. This is because in the relatively prime case there was no generator that gave us a multiple of $a$ and $b$ at the same time so that we can reduce it to the starting vertex: $(a, b)$. \textit{As an example, try adding either generator to the last element in the $\mathbb{Z}_{3} \oplus \mathbb{Z}_{2}$ digraph.}
     \item<3-> The two theorems we proved are about external direct products of \textit{two} $\mathbb{Z}$-mod groups but I wonder if we can generalize this theorem to Cayley digraphs with more than two groups.
 \end{itemize}
 \end{frame}
@@ -363,7 +374,7 @@ Now we look at the special case where $gcd(m, n)$ $>$ $1$.
 
     \only<4>{Now we can see that $G/H = \{s^{0}H, s^{1}H, ..., s^{n}H\}$. We conclude that $sH$ generates the factor group $G/H$ and also note that this partitions the group $G$ into cosets of the form $s^{0}H, s^{1}H, ..., s^{n}H$.}
 
-    \only<4>{We will use these cosets to form the Hamiltonian path in $Cay(S:G)$. We begin in the first coset, H, and start from the identity element of $G$, which is in $H$ because $H \leq G$, the path given by $(a_{1}, a_{2}, ..., a_{k})$ visits each element of H exactly once because $(a_{1}, a_{2}, ..., a_{k})$ is a Hamiltonian path in $Cay(T:H)$. Because we partitioned G into these $n$ cosets we are treating each distinct coset as a $Cay(T:H)$ Digraph.}
+    \only<4>{We will use these cosets to form the Hamiltonian path in $Cay(S:G)$. We begin in the first coset, H, and start from the identity element of $G$, which is in $H$ because $H \leq G$, the path given by $(a_{1}, a_{2}, ..., a_{k})$ visits each element of H exactly once because $(a_{1}, a_{2}, ..., a_{k})$ is a Hamiltonian path in $Cay(T:H)$. Because we partitioned G into these $n$ cosets we are treating each distinct coset as a $Cay(T:H)$ digraph.}
 
     \only<5>{When we do this, the inductive hypothesis says that there exists a Hamiltonian path in $Cay(T:H)$, the generator $S$ moves to the next coset and we apply the same idea until the last element in the last coset.}
 
@@ -486,7 +497,7 @@ detect and eliminate redundant branches in the search.}
 \begin{frame}{Acknowledgments}
     \begin{itemize}
         \item Thank you Dr. Casey Mann for your time and willingness to dive into the details of Theorem 28.3, equivalence relations of words, and other topics in this presentation. I left all of our office hour sessions with more clarity on how to think about these results.
-        \item Thank you Dr. Joseph A. Gallian for writing a sublime Abstract Algebra textbook and specifically for the exposition on generators and relations and Cayley Digraphs of Groups.
+        \item Thank you Dr. Joseph A. Gallian for writing a sublime Abstract Algebra textbook and specifically for the exposition on generators and relations and Cayley digraphs of Groups.
         \item Thank you to the authors of the many online sources I used and learned from while creating this talk. I have linked their work in the SOURCES.md file of this GitHub repository.
     \end{itemize}
 \end{frame}
@@ -616,11 +627,11 @@ $acc^{-1}b$ is equivalent to $ab$ because we can obtain $ab$ by a deletion of th
 \begin{frame}{Appendix: Proof that the automorphism group is a group}
 \textbf{Claim: The automorphism group is a group.}
     \begin{proof}
-        Let Aut(G) be the automorphism group of G. We want to show that this is a group. First, we note that the identity map (the map that takes each element of g in the domain to its corresponding g in the codomain) is an element of Aut(G) by definition. This map is 1-1, onto, and operation preserving. Thus, we have an identity element of Aut(G).
+        Let $Aut(G)$ be the automorphism group of $G$. We want to show that this is a group. First, we note that the identity map (the map that takes each element of $g$ in the domain to its corresponding $g$ in the codomain) is an element of $Aut(G)$ by definition. This map is 1-1, onto, and operation preserving. Thus, we have an identity element of $Aut(G)$.
 
-        Next, let $\varphi: G \to G$, $\lambda: G \to G$ $\in$ Aut(G). We want to show that $(\varphi \circ \lambda)(g) \in G$. $\lambda (g) = g$ in $\lambda: G \to G$. So $g$ is an element of the codomain of $\lambda$ that is the input to $\varphi$. Then $\varphi(g) = g$ by its map. Thus, we have closure.
+        Next, let $\varphi: G \to G$, $\lambda: G \to G$ $\in Aut(G)$. We want to show that $(\varphi \circ \lambda)(g) \in G$. $\lambda (g) = g$ in $\lambda: G \to G$. So $g$ is an element of the codomain of $\lambda$ that is the input to $\varphi$. Then $\varphi(g) = g$ by its map. Thus, we have closure.
 
-        For inverses, let $\varphi: G \to G \in$ Aut(G). By the definition of Aut(G) $\varphi$ is an isomorphism. By Theorem 6.2, property 1 (Gallian 10th edition) $\varphi^{-1}$ exists and is an isomorphism from $G \to G$. Lastly, the associative property is inherited from the definition of function composition.
+        For inverses, let $\varphi: G \to G \in Aut(G)$. By the definition of Aut(G) $\varphi$ is an isomorphism. By Theorem 6.2, property 1 (Gallian 10th edition) $\varphi^{-1}$ exists and is an isomorphism from $G \to G$. Lastly, the associative property is inherited from the definition of function composition.
     \end{proof}
 \end{frame}
 \end{document}
