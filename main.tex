@@ -323,7 +323,7 @@ Now we look at the special case where $gcd(m, n)$ $>$ $1$.
 
     \only<2>{To form a Hamiltonian circuit we begin at the vertex $(0, 0)$ and cover the vertices in the first block by using the generator $(0, 1)$ until the last vertex in the first row is reached. Then apply the generator $(1, 0)$ to move vertically and continue this process of applying $(0, 1)$ to move horizontally and $(1, 0)$ to move vertically for each of the $k$ blocks until the vertex $(n - 1, 0)$ has been reached. We move vertically to the next block and repeat this process until the last vertex in the $k$th $n \times n$ block.}
 
-    \only<3>{Now, the left-most vertex in the last block is $(nk - 1, 0)$ and this needs to exit horizontally or vertically, by definition. Apply the generator $(1, 0)$ to this vertex. Then $(nk - 1, 0) + (1, 0) = (nk - 1 + 1, 0) = (nk, 0)$. Recall that our external direct product is $\mathbb{Z}_{nk} \oplus \mathbb{Z}_{k}$ so we can apply the group operation to $nk$ s.t. $nk \ mod \ (nk) = 0$.
+    \only<3>{Now, the left-most vertex in the last block is $(nk - 1, 0)$ and this needs to exit horizontally or vertically, by definition. Apply the generator $(1, 0)$ to this vertex. Then $(nk - 1, 0) + (1, 0) = (nk - 1 + 1, 0) = (nk, 0)$. Recall that our external direct product is $\mathbb{Z}_{nk} \oplus \mathbb{Z}_{n}$ so we can apply the group operation to $nk$ s.t. $nk \ mod \ (nk) = 0$.
 
     Thus, $(nk - 1, 0)$ exits vertically to $(0, 0)$ completing the Hamiltonian circuit.}
 \alt<3>{\qedhere}{\phantom\qedhere}
